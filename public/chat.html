@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="./assets/chat-icon.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="./css/chat.css">
+</head>
+
+<body>
+    <div class="sidebar"></div>
+    <script id="mustache-sidebar" type="text/html">
+        <div class="room">{{room}}</div>
+
+        <div class="userlist">
+            {{#users}}
+                <li>{{username}}</li>
+            {{/users}}
+        </div>
+    </script>
+    <div id="myAlert" class="alert">This is an alert message.</div>
+
+    <div class="chatbox">
+        <div id="chatbody">
+            <div class="message"><div class="username">Andrew</div> Hi there, how can I help you?</div>
+        </div>
+        <div class="message right form">
+            <form id="form">
+                <input type="text" id="input_message" placeholder="Type Here..." />
+                <button id="location"><img src="./assets/location.png" alt="" srcset=""></button>
+                <button type="submit" id="send">Send</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- mustache template -->
+    <script id="mustache-template" type="text/html">
+        <div class="message"><div class="username">{{username}}</div> {{message}} <small>{{createdAt}}</small></div>
+    </script>
+    <script id="mustache-location" type="text.html">
+        <div class="message">
+            <div class="username">{{username}}</div> <a target="_blank" href="{{url}}">Google Map <small>{{createdAt}}</small></a>
+        </div>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/chat.js"></script>
+</body>
+
+</html>
